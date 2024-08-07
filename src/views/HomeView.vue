@@ -1,9 +1,15 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import ExperienceList from '../components/ExperienceList.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <h1>Experience</h1>
+    <ExperienceList />
   </main>
 </template>
+<style>
+h1 {
+  margin-bottom: 8px;
+}
+</style>

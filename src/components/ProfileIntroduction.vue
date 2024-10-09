@@ -21,7 +21,7 @@ const basicInfo = computed(() => result.value?.basicInfos[0] ?? [])
 </script>
 
 <template>
-  <div v-if="basicInfo && basicInfo.title" class="basic-info">
+  <div v-if="basicInfo && basicInfo.title">
     <img alt="Vue logo" class="logo" :src="basicInfo.profileImage.url" width="125" height="125" />
     <div class="wrapper">
       <div class="greetings">
@@ -36,11 +36,6 @@ const basicInfo = computed(() => result.value?.basicInfos[0] ?? [])
 </template>
 
 <style scoped>
-@media (min-width: 1024px) {
-  .basic-info {
-    margin-right: 5rem;
-  }
-}
 h1 {
   font-weight: 500;
   font-size: 2.6rem;

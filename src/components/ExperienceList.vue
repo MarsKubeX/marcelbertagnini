@@ -48,7 +48,7 @@ const experiencesList = computed(() => result.value?.experiences ?? [])
   position: relative;
   padding: 0;
   @media (max-width: 1024px) {
-    margin: 50px auto;
+    margin: 16px auto;
   }
   @media (min-width: 1024px) {
     list-style: none;

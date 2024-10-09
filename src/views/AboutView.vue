@@ -1,6 +1,7 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <label>E-mail:</label>
+    <a href="mailto: marcel.bertagnini@gmail.com"> marcel.bertagnini@gmail.com </a>
   </div>
 </template>
 
@@ -11,5 +12,9 @@
     display: flex;
     align-items: center;
   }
+}
+
+.about a {
+  color: hsla(160, 100%, 37%, 1);
 }
 </style>

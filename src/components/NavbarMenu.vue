@@ -31,7 +31,7 @@ header {
 }
 
 nav {
-  width: 100vw;
+  width: 90vw;
   font-size: 1rem;
   display: flex;
   @media (max-width: 1024px) {

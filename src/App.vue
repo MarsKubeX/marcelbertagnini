@@ -4,10 +4,15 @@ import NavbarMenu from './components/NavbarMenu.vue'
 </script>
 
 <template>
-  <div class="body-container">
-    <NavbarMenu></NavbarMenu>
-  </div>
-  <RouterView />
+  <header>
+    <div class="body-container">
+      <NavbarMenu></NavbarMenu>
+    </div>
+  </header>
+  <body>
+    <RouterView />
+  </body>
+  <footer>This is a footer</footer>
 </template>
 
 <style scoped>

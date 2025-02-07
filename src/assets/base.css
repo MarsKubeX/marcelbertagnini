@@ -4,8 +4,8 @@
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
 
-  --vt-c-black: #1a2037;
-  --vt-c-black-soft: #222222;
+  --vt-c-black: #191e32;
+  --vt-c-black-soft: #121212;
   --vt-c-black-mute: #282828;
 
   --vt-c-indigo: #2c3e50;
@@ -61,7 +61,12 @@
 body {
   min-height: 100vh;
   color: var(--color-text);
-  background: var(--color-background);
+  /* background: var(--color-background); */
+  background-image: linear-gradient(
+    to bottom right,
+    var(--color-background-soft),
+    var(--color-background)
+  );
   transition:
     color 0.5s,
     background-color 0.5s;

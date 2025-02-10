@@ -1,25 +1,4 @@
 <template>
-  <!-- <div class="flip-card-container">
-    <div class="flip-card-inner">
-      <div class="card-front-container">
-        <div class="card-front">
-          <div class="card-image">
-            <img alt="Vue logo" :src="titleIcon" width="125" height="125" />
-          </div>
-          <h3 class="card-title">{{ title }}</h3>
-        </div>
-      </div>
-      <div class="card-back-container">
-        <div class="card-back">
-          <ul class="card-description-list">
-            <li v-for="bulletPoint in description" v-bind:key="bulletPoint">
-              {{ bulletPoint }}
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div> -->
   <div class="flip-card">
     <div class="flip-card-inner">
       <!-- Parte Frontal -->
@@ -31,9 +10,11 @@
       </div>
       <!-- Parte Trasera -->
       <div class="flip-card-back">
-        <div v-for="bulletPoint in description" v-bind:key="bulletPoint">
-          {{ bulletPoint }}
-        </div>
+        <ul>
+          <li v-for="bulletPoint in description" v-bind:key="bulletPoint">
+            {{ bulletPoint }}
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -50,8 +31,8 @@ defineProps<{
 <style scoped>
 .flip-card {
   background-color: transparent;
-  width: 25rem; /* Tamaño fijo */
-  height: 25rem; /* Tamaño fijo */
+  width: 30rem; /* Tamaño fijo */
+  height: 30rem; /* Tamaño fijo */
   perspective: 1000px; /* Para el efecto 3D */
 }
 .flip-card-inner {
@@ -81,25 +62,13 @@ defineProps<{
 }
 
 .flip-card-front {
-  background-image: linear-gradient(to bottom right, red, yellow);
-  color: #000;
+  background-image: linear-gradient(to bottom right, #1a363a, #5f8a77);
 }
 
 .flip-card-back {
-  background-color: #2980b9;
-  color: #fff;
+  background-image: linear-gradient(to bottom right, #5f8a77, #1a363a);
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
-  div {
-    padding: 0 0.5rem;
-    margin: 0.5rem;
-    border: 1px solid #fff;
-    border-radius: 1rem;
-  }
-  div:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
 }
 </style>

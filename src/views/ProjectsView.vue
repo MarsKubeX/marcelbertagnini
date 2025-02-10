@@ -1,7 +1,6 @@
 <template>
   <div class="about">
-    <label>E-mail:</label>
-    <a href="mailto: marcel.bertagnini@gmail.com"> marcel.bertagnini@gmail.com </a>
+    <label>First project</label>
   </div>
 </template>
 

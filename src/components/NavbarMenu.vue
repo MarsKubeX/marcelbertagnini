@@ -19,7 +19,7 @@ const openCloseMenu = () => {
     </div>
     <nav :class="[isMenuOpen ? 'nav-menu-open' : 'nav-menu-close']">
       <RouterLink @click="openCloseMenu()" to="/">Home</RouterLink>
-      <RouterLink @click="openCloseMenu()" to="/about">About</RouterLink>
+      <RouterLink @click="openCloseMenu()" to="/projects">Projects</RouterLink>
     </nav>
   </header>
 </template>

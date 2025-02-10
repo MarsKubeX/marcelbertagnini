@@ -13,6 +13,9 @@ import ContactList from '../components/ContactList.vue'
       <h1>Experience</h1>
       <ExperienceList />
     </div>
+    <div class="container-experiences">
+      <h1>Skills</h1>
+    </div>
     <div class="container-contact">
       <h1>Contact</h1>
       <ContactList />

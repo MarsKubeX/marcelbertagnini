@@ -12,11 +12,27 @@ import NavbarMenu from './components/NavbarMenu.vue'
   <body>
     <RouterView />
   </body>
-  <footer>This is a footer</footer>
+  <footer>
+    <div>
+      <span>Marcel Bertagnini</span>
+      <span>© 2025 All Rights Reserved</span>
+    </div>
+  </footer>
 </template>
 
 <style scoped>
 .body-container {
   max-height: 100vh;
+}
+footer {
+  background-color: var(--color-footer);
+  text-align: center;
+  padding: 2rem 1rem 2rem 1rem;
+  bottom: 0;
+  width: 100%;
+  div {
+    display: flex;
+    justify-content: space-around;
+  }
 }
 </style>

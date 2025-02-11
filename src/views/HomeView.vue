@@ -2,6 +2,7 @@
 import ExperienceList from '../components/ExperienceList.vue'
 import ProfileIntroduction from '../components/ProfileIntroduction.vue'
 import ContactList from '../components/ContactList.vue'
+import SkillList from '../components/SkillList.vue'
 </script>
 
 <template>
@@ -9,14 +10,15 @@ import ContactList from '../components/ContactList.vue'
     <div>
       <ProfileIntroduction class="container-introduction" />
     </div>
-    <div class="container-experiences">
+    <div class="container-section">
       <h1>Experience</h1>
       <ExperienceList />
     </div>
-    <div class="container-experiences">
+    <div class="container-section">
       <h1>Skills</h1>
+      <SkillList />
     </div>
-    <div class="container-contact">
+    <div class="container-section">
       <h1>Contact</h1>
       <ContactList />
     </div>
@@ -37,14 +39,7 @@ import ContactList from '../components/ContactList.vue'
   text-align: center;
 }
 
-.container-experiences {
-  margin: 0 10rem;
-  h1 {
-    margin-bottom: 2rem;
-  }
-}
-
-.container-contact {
+.container-section {
   margin: 2rem 10rem;
   h1 {
     margin-bottom: 2rem;

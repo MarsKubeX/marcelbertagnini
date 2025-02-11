@@ -6,7 +6,7 @@ import ExperienceCard from './ExperienceCard.vue'
 
 const EXPERIENCES_LIST_QUERY = gql`
   query {
-    experienceTechnologies(orderBy: createdAt_DESC) {
+    experienceTechnologies(orderBy: createdAt_ASC) {
       id
       title
       description
@@ -17,7 +17,6 @@ const EXPERIENCES_LIST_QUERY = gql`
   }
 `
 const { result } = useQuery(EXPERIENCES_LIST_QUERY)
-console.log(result.value)
 
 const experiencesList = computed(() => result.value?.experienceTechnologies ?? [])
 </script>

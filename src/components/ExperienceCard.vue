@@ -50,6 +50,10 @@ defineProps<{
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
+
+.flip-card:focus .flip-card-inner {
+  transform: rotateY(180deg);
+}
 /* Caras de la tarjeta */
 .flip-card-front,
 .flip-card-back {

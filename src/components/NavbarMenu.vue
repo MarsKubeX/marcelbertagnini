@@ -25,6 +25,7 @@ const openCloseMenu = () => {
 </template>
 <style scoped>
 header {
+  margin: 0 1rem;
   @media (min-width: 1024px) {
     padding: 2rem 0;
   }

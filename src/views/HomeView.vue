@@ -33,16 +33,25 @@ import SkillList from '../components/SkillList.vue'
   }
 }
 .container-introduction {
-  margin: 0 15rem;
-  margin-bottom: 5rem;
+  margin: 2rem 2rem;
   justify-items: center;
   text-align: center;
+  @media (min-width: 1024px) {
+    margin: 0 15rem;
+    margin-bottom: 5rem;
+  }
 }
 
 .container-section {
-  margin: 2rem 10rem;
+  margin: 2rem 2rem;
   h1 {
     margin-bottom: 2rem;
+  }
+  @media (min-width: 1024px) {
+    margin: 2rem 10rem;
+    h1 {
+      margin-bottom: 2rem;
+    }
   }
 }
 </style>

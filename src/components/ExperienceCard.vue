@@ -30,9 +30,13 @@ defineProps<{
 
 <style scoped>
 .flip-card {
+  width: 20rem; /* Tamaño fijo */
+  height: 45rem; /* Tamaño fijo */
   background-color: transparent;
-  width: 30rem; /* Tamaño fijo */
-  height: 30rem; /* Tamaño fijo */
+  @media (min-width: 640px) {
+    width: 30rem; /* Tamaño fijo */
+    height: 30rem; /* Tamaño fijo */
+  }
   perspective: 1000px; /* Para el efecto 3D */
 }
 .flip-card-inner {

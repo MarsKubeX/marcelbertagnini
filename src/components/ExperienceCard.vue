@@ -1,6 +1,6 @@
 <template>
-  <div class="flip-card">
-    <div class="flip-card-inner">
+  <div @click="isRotated = !isRotated" class="flip-card">
+    <div :class="`flip-card-inner ${isRotated ? 'rotate-card' : ''}`">
       <!-- Parte Frontal -->
       <div class="flip-card-front">
         <div class="card-image">
@@ -21,6 +21,9 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+const isRotated = ref(false)
+
 defineProps<{
   title: string
   description: string[]
@@ -51,8 +54,10 @@ defineProps<{
   transform: rotateY(180deg);
 }
 
-.flip-card:focus .flip-card-inner {
-  transform: rotateY(180deg);
+.rotate-card {
+  @media (min-width: 640px) {
+    transform: rotateY(180deg);
+  }
 }
 /* Caras de la tarjeta */
 .flip-card-front,

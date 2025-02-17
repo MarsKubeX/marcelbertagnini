@@ -1,12 +1,13 @@
 <template>
   <div class="flip-card">
-    <div class="flip-card-inner">
+    <div class="flip-card-inner" :class="{ flipped: isFlipped }">
       <!-- Parte Frontal -->
       <div class="flip-card-front">
         <div class="card-image">
           <img alt="Vue logo" :src="titleIcon" width="125" height="125" />
+          <h3 class="card-title">{{ title }}</h3>
         </div>
-        <h3 class="card-title">{{ title }}</h3>
+        <button @click="isFlipped = !isFlipped" class="more-info-button">More Info</button>
       </div>
       <!-- Parte Trasera -->
       <div class="flip-card-back">
@@ -21,6 +22,9 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+
+const isFlipped = ref(false)
 defineProps<{
   title: string
   description: string[]
@@ -51,10 +55,8 @@ defineProps<{
   transform: rotateY(180deg);
 }
 
-.flip-card:focus .flip-card-inner {
-  @media (max-width: 640px) {
-    transform: rotateY(180deg);
-  }
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
 }
 /* Caras de la tarjeta */
 .flip-card-front,
@@ -69,6 +71,9 @@ defineProps<{
   justify-content: center;
   padding: 1rem;
   border: 1px solid #ccc;
+  @media (max-width: 640px) {
+    flex-direction: column;
+  }
 }
 
 .flip-card-front {
@@ -80,5 +85,24 @@ defineProps<{
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
+}
+
+.card-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.more-info-button {
+  @media (min-width: 640px) {
+    display: none;
+  }
+  background-color: transparent;
+  margin-top: 2rem;
+  padding: 0.5rem;
+  border: 1px solid var(--color-text);
+  color: var(--color-text);
+  border-radius: 1rem;
 }
 </style>

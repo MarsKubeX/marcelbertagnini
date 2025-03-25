@@ -8,7 +8,7 @@ const openCloseMenu = () => {
 </script>
 
 <template>
-  <header>
+  <div class="navbar-menu-container">
     <div class="header-button-nav-menu">
       <i @click="openCloseMenu()" class="material-icons" style="font-size: 36px; cursor: pointer">
         <Transition name="fade-icon-menu" mode="out-in">
@@ -22,10 +22,10 @@ const openCloseMenu = () => {
       <!-- TODO -->
       <!-- <RouterLink @click="openCloseMenu()" to="/projects">Projects</RouterLink> -->
     </nav>
-  </header>
+  </div>
 </template>
 <style scoped>
-header {
+.navbar-menu-container {
   margin: 0 1rem;
   @media (min-width: 1024px) {
     padding: 2rem 0;

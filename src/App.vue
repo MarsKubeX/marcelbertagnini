@@ -5,13 +5,13 @@ import NavbarMenu from './components/NavbarMenu.vue'
 
 <template>
   <header>
-    <div class="body-container">
-      <NavbarMenu></NavbarMenu>
+    <div class="header-container">
+      <NavbarMenu />
     </div>
   </header>
-  <body>
+  <main>
     <RouterView />
-  </body>
+  </main>
   <footer>
     <div>
       <span>Marcel Bertagnini</span>
@@ -21,7 +21,7 @@ import NavbarMenu from './components/NavbarMenu.vue'
 </template>
 
 <style scoped>
-.body-container {
+.header-container {
   max-height: 100vh;
 }
 footer {

@@ -18,9 +18,9 @@ const openCloseMenu = () => {
       >
     </div>
     <nav :class="[isMenuOpen ? 'nav-menu-open' : 'nav-menu-close']">
-      <RouterLink @click="openCloseMenu()" to="/">Home</RouterLink>
+      <RouterLink class="text-url" @click="openCloseMenu()" to="/">Home</RouterLink>
       <!-- TODO -->
-      <!-- <RouterLink @click="openCloseMenu()" to="/projects">Projects</RouterLink> -->
+      <RouterLink class="text-url" @click="openCloseMenu()" to="/projects">Projects</RouterLink>
     </nav>
   </div>
 </template>

@@ -28,3 +28,6 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+# Local working notes (not shared in the repo)
+PLAN.md

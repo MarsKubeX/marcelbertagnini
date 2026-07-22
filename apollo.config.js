@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 // apollo.config.js
 module.exports = {
   client: {

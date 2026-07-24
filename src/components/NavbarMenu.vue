@@ -1,100 +1,141 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
-import { type Ref, ref } from 'vue'
-const isMenuOpen: Ref<boolean> = ref(false)
-const openCloseMenu = () => {
-  isMenuOpen.value = !isMenuOpen.value
+import { ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { goToSection } from '@/composables/useScrollTo'
+import { socialLinks } from '@/content/social'
+import githubIcon from '@/assets/Github_dark.svg'
+import linkedinIcon from '@/assets/linkedin.svg'
+
+const router = useRouter()
+const route = useRoute()
+const isMenuOpen = ref(false)
+
+const navLinks = [
+  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'blog', label: 'Blog' }
+]
+
+const socialIcons: Record<string, string> = {
+  github: githubIcon,
+  linkedin: linkedinIcon
+}
+
+function handleNav(id: string) {
+  isMenuOpen.value = false
+  goToSection(router, route, id)
 }
 </script>
 
 <template>
-  <div class="navbar-menu-container">
-    <div class="header-button-nav-menu">
-      <i @click="openCloseMenu()" class="material-icons" style="font-size: 36px; cursor: pointer">
-        <Transition name="fade-icon-menu" mode="out-in">
-          <span style="color: #328565" v-if="isMenuOpen">close</span>
-          <span style="color: #328565" v-else>menu</span></Transition
-        ></i
+  <header
+    class="fixed top-0 z-50 w-full border-b border-white/10 bg-surface/70 backdrop-blur-md"
+  >
+    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 md:px-16">
+      <button
+        class="font-headline text-headline-md tracking-tight text-primary"
+        @click="handleNav('hero')"
       >
+        Marcel Bertagnini
+      </button>
+
+      <nav class="hidden items-center gap-8 md:flex">
+        <a
+          v-for="link in navLinks"
+          :key="link.id"
+          :href="`#${link.id}`"
+          class="font-label text-label-md text-on-surface-variant transition-colors hover:text-primary"
+          @click.prevent="handleNav(link.id)"
+        >
+          {{ link.label }}
+        </a>
+        <div class="flex items-center gap-4 border-l border-white/10 pl-6">
+          <a
+            v-for="social in socialLinks.filter((s) => s.icon !== 'mail')"
+            :key="social.label"
+            :href="social.href"
+            :aria-label="social.label"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="opacity-80 transition-opacity hover:opacity-100"
+          >
+            <img :src="socialIcons[social.icon]" :alt="social.label" class="h-5 w-5" />
+          </a>
+        </div>
+      </nav>
+
+      <button
+        class="text-primary md:hidden"
+        :aria-expanded="isMenuOpen"
+        aria-label="Toggle menu"
+        @click="isMenuOpen = !isMenuOpen"
+      >
+        <svg
+          v-if="!isMenuOpen"
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-7 w-7"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="1.5"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5" />
+        </svg>
+        <svg
+          v-else
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-7 w-7"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="1.5"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
     </div>
-    <nav :class="[isMenuOpen ? 'nav-menu-open' : 'nav-menu-close']">
-      <RouterLink class="text-url" @click="openCloseMenu()" to="/">Home</RouterLink>
-      <!-- TODO -->
-      <RouterLink class="text-url" @click="openCloseMenu()" to="/projects">Projects</RouterLink>
-    </nav>
-  </div>
+
+    <Transition name="drawer">
+      <div
+        v-if="isMenuOpen"
+        class="flex flex-col gap-6 border-t border-white/10 bg-surface/95 px-6 py-8 backdrop-blur-md md:hidden"
+      >
+        <a
+          v-for="link in navLinks"
+          :key="link.id"
+          :href="`#${link.id}`"
+          class="font-headline text-headline-md text-on-surface-variant"
+          @click.prevent="handleNav(link.id)"
+        >
+          {{ link.label }}
+        </a>
+        <div class="flex items-center gap-6 pt-2">
+          <a
+            v-for="social in socialLinks.filter((s) => s.icon !== 'mail')"
+            :key="social.label"
+            :href="social.href"
+            :aria-label="social.label"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img :src="socialIcons[social.icon]" :alt="social.label" class="h-6 w-6" />
+          </a>
+        </div>
+      </div>
+    </Transition>
+  </header>
 </template>
+
 <style scoped>
-.navbar-menu-container {
-  margin: 0 1rem;
-  @media (min-width: 1024px) {
-    padding: 2rem 0;
-  }
+.drawer-enter-active,
+.drawer-leave-active {
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
-
-nav {
-  width: 90vw;
-  font-size: 1rem;
-  display: flex;
-  @media (max-width: 1024px) {
-    background-color: #328565;
-    flex-direction: column;
-    padding: 2rem 0 2rem 0;
-    position: absolute;
-  }
-}
-
-.nav-menu-open {
-  left: 0px;
-  transition: 1s;
-}
-.nav-menu-close {
-  left: -100%;
-  transition: 1.5s;
-}
-
-.fade-icon-menu-enter-active,
-.fade-icon-menu-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-icon-menu-enter-from,
-.fade-icon-menu-leave-to {
+.drawer-enter-from,
+.drawer-leave-to {
   opacity: 0;
-}
-
-nav a.router-link-exact-active {
-  color: hsla(160, 100%, 37%, 1);
-}
-
-nav a {
-  color: white;
-  display: inline-block;
-  @media (min-width: 1024px) {
-    padding: 0 1rem;
-    border-left: 1px solid white;
-  }
-  @media (max-width: 1024px) {
-    padding: 0.5rem 0 0 2rem;
-    font-size: 1.5rem;
-  }
-}
-nav a:first-of-type {
-  border: 0;
-  padding-left: 2rem;
-  @media (min-width: 1024px) {
-    padding-left: 1rem;
-  }
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-.header-button-nav-menu {
-  padding: 1rem 0 0 0;
-  @media (min-width: 1024px) {
-    display: none;
-  }
+  transform: translateY(-8px);
 }
 </style>

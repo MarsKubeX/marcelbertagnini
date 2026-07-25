@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { scrollToSection } from '@/composables/useScrollTo'
+
+const avatarUrl = `${import.meta.env.BASE_URL}img/profile.jpeg`
 </script>
 
 <template>
@@ -8,6 +10,16 @@ import { scrollToSection } from '@/composables/useScrollTo'
     class="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 pt-20 text-center md:px-16"
   >
     <div class="relative z-10 max-w-4xl space-y-6">
+      <div
+        class="mx-auto h-28 w-28 rounded-full bg-linear-to-br from-primary to-secondary p-0.75 shadow-[0_0_30px_rgba(76,215,246,0.35)]"
+      >
+        <img
+          :src="avatarUrl"
+          alt="Marcel Bertagnini"
+          class="h-full w-full rounded-full border-2 border-surface object-cover"
+        />
+      </div>
+
       <div
         class="glass-panel inline-flex items-center gap-2 rounded-full border border-secondary/30 px-4 py-1.5 font-label text-label-sm text-secondary"
       >
@@ -43,7 +55,7 @@ import { scrollToSection } from '@/composables/useScrollTo'
       <div class="flex flex-col items-center justify-center gap-4 pt-6 sm:flex-row">
         <a
           href="#projects"
-          class="rounded-xl bg-gradient-to-r from-primary to-secondary px-8 py-4 font-label text-label-md text-on-primary shadow-[0_0_30px_rgba(76,215,246,0.3)] transition-all hover:scale-105"
+          class="rounded-xl bg-linear-to-r from-primary to-secondary px-8 py-4 font-label text-label-md text-on-primary shadow-[0_0_30px_rgba(76,215,246,0.3)] transition-all hover:scale-105"
           @click.prevent="scrollToSection('projects')"
         >
           View Projects
